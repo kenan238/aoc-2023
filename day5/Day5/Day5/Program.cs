@@ -15,7 +15,8 @@ namespace Day5
       {
         ulong current = numbers[i];
         ulong future = numbers[i + 1];
-        seeds.Add(new SeedRange {
+        seeds.Add(new SeedRange
+        {
           Start = current,
           Length = future
         });
@@ -109,14 +110,13 @@ namespace Day5
 
       var counter = 0;
 
-      foreach (SeedRange initial in seedsAsRanges)
+      foreach (SeedRange initialC in seedsAsRanges)
       {
-        //Console.WriteLine("=====================");
+        SeedRange initial = initialC;
         Range adeq = Range.FindAdequate(conversionMaps[Range.Type.SEED_TO_SOIL], initial);
         ulong seed = (ulong)adeq.ConvertSource(initial);
         Range.Type targetType = Range.Type.SEED_TO_SOIL;
-
-        //Console.WriteLine("part2 seed = " + seed.ToString());
+        Console.WriteLine("part2 seed = " + seed.ToString());
         while (targetType <= Range.Type.HUMID_TO_LOCATION)
         {
           Range adequate = Range.FindAdequate(conversionMaps[targetType], seed);

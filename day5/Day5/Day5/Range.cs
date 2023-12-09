@@ -10,14 +10,6 @@ namespace Day5
   {
     public ulong Start;
     public ulong Length;
-
-    public void FindOverlap(Range r)
-    {
-      if (r == null)
-        return;
-
-      // Gotta code this
-    }
   }
 
   public class Range
@@ -43,6 +35,21 @@ namespace Day5
       DestinationStart = Convert.ToUInt64(split[0]);
       SourceRangeStart = Convert.ToUInt64(split[1]);
       Length = Convert.ToUInt64(split[2]);
+    }
+
+    public (ulong, ulong)? CalculateOverlap(ulong otherStart, ulong otherLength)
+    {
+      ulong overlapStart = Math.Max(this.SourceRangeStart, otherStart);
+      ulong overlapEnd = Math.Min(this.SourceRangeStart + this.Length, otherStart + otherLength);
+
+      if (overlapEnd > overlapStart)
+      {
+        return (overlapStart, overlapEnd);
+      }
+      else
+      {
+        return null;
+      }
     }
 
     public ulong? ConvertSource(ulong source)

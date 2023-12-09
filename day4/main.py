@@ -35,7 +35,7 @@ class Card:
     for i in range(len(matches)):
       if point == 0:
         point = 1
-        continue
+        continuer
       point *= 2
     
     return point
