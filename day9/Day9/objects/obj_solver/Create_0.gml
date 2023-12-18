@@ -12,7 +12,7 @@ for (var i = 0; i < array_length(_data); i++) {
 	
 	var _seqs = [];
 	var _cur = _nbrs;
-	array_push(_seqs, _cur);
+	array_push(_seqs, _cur); 
 	
 	do {
 		_cur = array_diff(_cur);
